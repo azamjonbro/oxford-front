@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --p-h: 221;
+  --p-s: 100%;
+  --p-l: 50%;
+
+  --color-primary: hsl(var(--p-h), var(--p-s), var(--p-l));
+  --color-primary-dark: hsl(var(--p-h), var(--p-s), 40%);
+  --color-primary-alpha: hsla(var(--p-h), var(--p-s), var(--p-l), 0.08);
+  
+  --color-white: #ffffff;
+  --color-bg-1: #ffffff;
+  --color-bg-2: #f8faff;
+  --color-border: #eef2f8;
+  
+  --color-text-1: #0a1128;
+  --color-text-2: #4f5b7d;
+  --color-glass: rgba(255, 255, 255, 0.85);
+
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  --container-width: 1240px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 32px;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--color-bg-1);
+  color: var(--color-text-1);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+button { border: none; background: none; cursor: pointer; font-family: inherit; transition: var(--transition); }
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* GLOBAL RESPONSIVE UTILITIES */
+@media (max-width: 1200px) {
+  html { font-size: 15px; }
+  .container { max-width: 960px; }
+}
+
+@media (max-width: 992px) {
+  html { font-size: 14px; }
+  .container { max-width: 720px; }
+  
+  .section-title { font-size: 3rem !important; }
+}
+
+@media (max-width: 768px) {
+  .container { max-width: 100%; padding: 0 20px; }
+  
+  .section-header { text-align: center; margin-bottom: 40px !important; }
+  .section-title { font-size: 2.5rem !important; letter-spacing: -1px !important; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 13px; }
+  .section-title { font-size: 2.2rem !important; }
+}
+
+/* TYPOGRAPHY */
+.badge {
+  color: var(--color-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  color: var(--color-text-1);
+}

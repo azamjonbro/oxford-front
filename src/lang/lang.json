@@ -1,0 +1,518 @@
+{
+  "uz": {
+    "nav": {
+      "home": "Bosh sahifa",
+      "courses": "Kurslar",
+      "about": "Biz haqimizda",
+      "teachers": "Jamoa",
+      "events": "Tadbirlar",
+      "contact": "Aloqa"
+    },
+    "welcome": "Oxford o'quv markaziga xush kelibsiz",
+    "buttons": {
+      "enroll": "Yozilish",
+      "contact": "Bog'lanish",
+      "more": "Batafsil",
+      "send": "Yuborish",
+      "view_platform": "Platformani ko'rish"
+    },
+    "hero": {
+      "slide1": {
+        "title": "Eng zo'r dars reja.",
+        "desc": "Bizning o'quv markazimizda eng zamonaviy va samarali dars rejalaridan foydalaniladi."
+      }
+    },
+    "sections": {
+      "benefits": "Afzalliklarimiz",
+      "benefits_title": "Nega aynan Oxford?",
+      "teachers": "Bizning Ustozlar",
+      "teachers_title": "Soha mutaxassislaridan o'rganing",
+      "results": "Natijalarimiz",
+      "results_title": "O'quvchilarimizning IELTS natijalari",
+      "faq": "FAQ",
+      "faq_title": "Tez-tez beriladigan savollar",
+      "events": "E'lonlar",
+      "events_title": "Eng so'nggi tadbirlar",
+      "contact": "Aloqa",
+      "courses": "Bizning o'quv yo'nalishlarimiz"
+    },
+    "team_cats": {
+      "creator": "Yaratuvchilar",
+      "manager": "Menejerlar",
+      "head_of_edu": "O'quv bo'limi boshliqlari",
+      "branch_head": "Filial boshliqlari",
+      "teacher": "Ustozlar"
+    },
+    "modal": {
+      "title": "Bepul darsga yozilish",
+      "subtitle": "Ma'lumotlaringizni qoldiring, biz bog'lanamiz.",
+      "name_label": "Ismingiz",
+      "phone_label": "Telefon raqam",
+      "course_label": "Kursni tanlang",
+      "time_label": "Vaqt",
+      "select_placeholder": "Tanlash...",
+      "sending": "Yuborilmoqda...",
+      "success": "Muvaffaqiyatli yuborildi!",
+      "error_name": "Ismingizni kiriting",
+      "error_phone": "Telefon raqam xato",
+      "error_course": "Kursni tanlang",
+      "times": {
+        "morning": "Ertalab",
+        "afternoon": "Tushki",
+        "evening": "Kechki"
+      }
+    },
+    "footer": {
+      "desc": "Kelajagingizni biz bilan quring. Eng zamonaviy o'quv metodikasi, professional ustozlar va xalqaro standartlarga mos muhit.",
+      "pages": "Sahifalar",
+      "contact": "Bog'lanish",
+      "address": "Toshkent sh., Chilonzor tumani, Qatortol ko'chasi",
+      "rights": "Barcha huquqlar himoyalangan.",
+      "privacy": "Maxfiylik siyosati",
+      "terms": "Foydalanish shartlari"
+    },
+    "benefits": {
+      "app": {
+        "tag": "Digital Platform",
+        "title": "Student App — hamma narsa bir joyda",
+        "desc": "Vazifalar, lug'atlar va AI yordamchi Harry bilan shaxsiy mashg'ulotlar endi telefoningizda."
+      },
+      "prize": {
+        "tag": "GIVEAWAY",
+        "title": "IELTS 9.0 = BYD Chazor",
+        "desc": "Bizning markazda eng yuqori natija ko'rsatgan o'quvchilar uchun maxsus avtomobil sovg'asi."
+      },
+      "experts": {
+        "title": "Top darajadagi ustozlar",
+        "desc": "Har bir talaba bilan 3 tagacha professional mutaxassis individual ishlaydi."
+      },
+      "support": {
+        "title": "Academic Support",
+        "desc": "Darsdan so'ng tushunmagan mavzularni o'rganish uchun har doim yordamchi ustozlar tayyor."
+      },
+      "ieltsx": {
+        "tag": "EXCLUSIVE",
+        "title": "© IELTS X Dasturi",
+        "desc": "Native speakerlar tomonidan ishlab chiqilgan mualliflik o'quv metodikasi."
+      },
+      "register": {
+        "title": "Maxsus tadbirga yoziling",
+        "desc": "Yaqinlashayotgan master-klasslarni o'tkazib yubormang."
+      }
+    },
+    "teamSubtitle": "Sizning natijangiz uchun harakat qiladigan professional jamoa.",
+    "about": {
+      "title": "BIZ HAQIMIZDA",
+      "subtitle": "Oxford o'quv markazi — sizning muvaffaqiyatli kelajagingiz poydevori.",
+      "description": "Oxford o'quv markazi 2013-yildan buyon O'zbekiston yoshlariga yuqori sifatli ta'lim berib kelmoqda. Bizning maqsadimiz — har bir o'quvchiga zamonaviy metodikalar asosida xorijiy tillarni o'rgatish va ularning intellektual salohiyatini oshirishdir. 13 yillik tajribamiz va 600 dan ortiq professional ustozlarimiz bilan biz sizga eng yaxshi natijani kafolatlaymiz.",
+      "stats": {
+        "branches": "Filiallar",
+        "staff": "Xodimlar",
+        "experience": "Faoliyat davri",
+        "since": "since 2013",
+        "students": "O'quvchilar",
+        "graduates": "Bitiruvchilar",
+        "more": "Batafsil",
+        "more_desc": "Biz haqimizda ko'proq bilib oling"
+      },
+      "page": {
+        "hero_badge": "Oxford Tarixi",
+        "hero_title": "Biz qanday boshlaganmiz?",
+        "hero_subtitle": "13 yillik tajriba, minglab muvaffaqiyat hikoyalari va kelajakka bo'lgan qat'iy ishonch.",
+        "stat_branch": "Filial",
+        "stat_staff": "Xodimlar",
+        "stat_graduates": "Bitiruvchilar",
+        "timeline_title": "Muvaffaqiyat yo'li",
+        "gallery_title": "Yirik loyihalar va tadbirlar",
+        "gallery_desc": "Minglab o'quvchilar va mutaxassislar ishtirokidagi konferensiya.",
+        "branches_title": "Bizning Filiallarimiz",
+        "videos_title": "Video Galereya",
+        "milestones": [
+          { "year": "2013", "title": "Ilk qadamlar", "desc": "Toshkent shahrida ilk Oxford o'quv markazi filiali o'z faoliyatini boshladi." },
+          { "year": "2015", "title": "Kengayish", "desc": "Ikkinchi filial va ilk IELTS tayyorlov kurslarining yo'lga qo'yilishi." },
+          { "year": "2017", "title": "Innovatsiyalar", "desc": "Student App platformasining ilk versiyasi ishga tushirildi." },
+          { "year": "2020", "title": "Global pandemiya va Online ta'lim", "desc": "Masofaviy ta'lim tizimi mukammallashtirildi va barcha darslar raqamli formatga o'tdi." },
+          { "year": "2022", "title": "10-filial", "desc": "O'quv markazimiz 10-yubiley filialini tantanali ravishda ochdi." },
+          { "year": "2024", "title": "Yangi cho'qqilar", "desc": "BYD avtomobil sovg'alari, 600+ xodim va respublika bo'ylab 13 ta filial." }
+        ]
+      }
+    },
+    "results": {
+      "badge": "Muvaffaqiyat",
+      "desc": "O'tgan yili o'quvchilarimizdan 500+ nafari xalqaro sertifikatlarni qo'lga kiritishdi.",
+      "stat1": "IELTS 7.0+",
+      "stat2": "Milliy sertifikat",
+      "stat3": "Universitetga qabul"
+    },
+    "filters": {
+      "all": "Barchasi"
+    },
+    "contact": {
+      "badge": "Aloqa",
+      "hero_title": "Biz bilan bog'laning",
+      "hero_subtitle": "Savollaringiz bormi? Bizga yozing yoki qo'ng'iroq qiling.",
+      "info": {
+        "phone": "Telefon",
+        "email": "Email",
+        "address": "Manzil",
+        "main_label": "Asosiy Manzil (Algoritm)",
+        "main_val": "Toshkent sh., Chilonzor tumani, 9-kvartal, Algoritm"
+      },
+      "form": {
+        "name": "Ismingiz",
+        "name_placeholder": "Ism familiya",
+        "phone": "Telefon",
+        "phone_placeholder": "+998",
+        "message": "Xabar",
+        "message_placeholder": "Sizni nima qiziqtirmoqda?",
+        "send": "Xabarni yuborish",
+        "success": "Xabaringiz yuborildi! Tez orada javob beramiz."
+      },
+      "branches_title": "Bizning Filiallar"
+    }
+  },
+  "en": {
+    "nav": {
+      "home": "Home",
+      "courses": "Courses",
+      "about": "About Us",
+      "teachers": "Team",
+      "events": "Events",
+      "contact": "Contact"
+    },
+    "welcome": "Welcome to Oxford Learning Center",
+    "buttons": {
+      "enroll": "Enroll",
+      "contact": "Contact",
+      "more": "More",
+      "send": "Send",
+      "view_platform": "View Platform"
+    },
+    "hero": {
+      "slide1": {
+        "title": "The Best Lesson Plan.",
+        "desc": "Our learning center uses the most modern and effective lesson plans."
+      }
+    },
+    "sections": {
+      "benefits": "Our Benefits",
+      "benefits_title": "Why specifically Oxford?",
+      "teachers": "Our Teachers",
+      "teachers_title": "Learn from industry experts",
+      "results": "Our Results",
+      "results_title": "IELTS results of our students",
+      "faq": "FAQ",
+      "faq_title": "Frequently Asked Questions",
+      "events": "Announcements",
+      "events_title": "Latest Events",
+      "contact": "Contact",
+      "courses": "Our Course Directions"
+    },
+    "team_cats": {
+      "creator": "Creators",
+      "manager": "Managers",
+      "head_of_edu": "Heads of Education",
+      "branch_head": "Branch Managers",
+      "teacher": "Teachers"
+    },
+    "modal": {
+      "title": "Register for a free lesson",
+      "subtitle": "Leave your information and we will contact you.",
+      "name_label": "Your Name",
+      "phone_label": "Phone Number",
+      "course_label": "Select Course",
+      "time_label": "Time",
+      "select_placeholder": "Choose...",
+      "sending": "Sending...",
+      "success": "Successfully sent!",
+      "error_name": "Please enter your name",
+      "error_phone": "Invalid phone number",
+      "error_course": "Please select a course",
+      "times": {
+        "morning": "Morning",
+        "afternoon": "Afternoon",
+        "evening": "Evening"
+      }
+    },
+    "footer": {
+      "desc": "Build your future with us. The most modern teaching methodology, professional teachers and an environment that meets international standards.",
+      "pages": "Pages",
+      "contact": "Contact",
+      "address": "Tashkent city, Chilanzar district, Qatortol street",
+      "rights": "All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    },
+    "benefits": {
+      "app": {
+        "tag": "Digital Platform",
+        "title": "Student App — everything in one place",
+        "desc": "Tasks, dictionaries and AI assistant Harry with personal lessons are now on your phone."
+      },
+      "prize": {
+        "tag": "GIVEAWAY",
+        "title": "IELTS 9.0 = BYD Chazor",
+        "desc": "A special car gift for students who show the highest results in our center."
+      },
+      "experts": {
+        "title": "Top-level teachers",
+        "desc": "Up to 3 professional specialists work individually with each student."
+      },
+      "support": {
+        "title": "Academic Support",
+        "desc": "Assistant teachers are always ready to learn topics not understood after class."
+      },
+      "ieltsx": {
+        "tag": "EXCLUSIVE",
+        "title": "© IELTS X Program",
+        "desc": "Author's teaching methodology developed by native speakers."
+      },
+      "register": {
+        "title": "Register for a special event",
+        "desc": "Don't miss upcoming masterclasses."
+      }
+    },
+    "teamSubtitle": "A professional team working for your results.",
+    "about": {
+      "title": "ABOUT US",
+      "subtitle": "Oxford Learning Center — the foundation of your successful future.",
+      "description": "Oxford Learning Center has been providing high-quality education to the youth of Uzbekistan since 2013. Our goal is to teach foreign languages to every student based on modern methodologies and increase their intellectual potential. With 13 years of experience and more than 600 professional teachers, we guarantee you the best results.",
+      "stats": {
+        "branches": "Branches",
+        "staff": "Staff",
+        "experience": "Years of activity",
+        "since": "since 2013",
+        "students": "Students",
+        "graduates": "Graduates",
+        "more": "More",
+        "more_desc": "Learn more about us"
+      },
+      "page": {
+        "hero_badge": "Oxford History",
+        "hero_title": "How did we start?",
+        "hero_subtitle": "13 years of experience, thousands of success stories and a firm belief in the future.",
+        "stat_branch": "Branch",
+        "stat_staff": "Staff",
+        "stat_graduates": "Graduates",
+        "timeline_title": "The path to success",
+        "gallery_title": "Major Projects and Events",
+        "gallery_desc": "Conference with thousands of students and specialists.",
+        "branches_title": "Our Branches",
+        "videos_title": "Video Gallery",
+        "milestones": [
+          { "year": "2013", "title": "First steps", "desc": "The first Oxford training center branch started its activities in Tashkent." },
+          { "year": "2015", "title": "Expansion", "desc": "Opening of the second branch and the first IELTS preparatory courses." },
+          { "year": "2017", "title": "Innovations", "desc": "The first version of the Student App platform was launched." },
+          { "year": "2020", "title": "Global Pandemic and Online Education", "desc": "The remote education system was improved and all lessons were moved to digital format." },
+          { "year": "2022", "title": "10th branch", "desc": "Our training center solemnly opened its 10th anniversary branch." },
+          { "year": "2024", "title": "New heights", "desc": "BYD car gifts, 600+ staff and 13 branches across the republic." }
+        ]
+      }
+    },
+    "results": {
+      "badge": "Success",
+      "desc": "Last year, 500+ of our students achieved international certificates.",
+      "stat1": "IELTS 7.0+",
+      "stat2": "National Certificate",
+      "stat3": "University Admission"
+    },
+    "filters": {
+      "all": "All"
+    },
+    "contact": {
+      "badge": "Contact",
+      "hero_title": "Contact Us",
+      "hero_subtitle": "Have questions? Write or call us.",
+      "info": {
+        "phone": "Phone",
+        "email": "Email",
+        "address": "Address",
+        "main_label": "Main Branch (Algoritm)",
+        "main_val": "Tashkent city, Chilanzar district, 9-kvartal, Algoritm"
+      },
+      "form": {
+        "name": "Your Name",
+        "name_placeholder": "Full name",
+        "phone": "Phone",
+        "phone_placeholder": "+998",
+        "message": "Message",
+        "message_placeholder": "What are you interested in?",
+        "send": "Send Message",
+        "success": "Your message has been sent! We will reply soon."
+      },
+      "branches_title": "Our Branches"
+    }
+  },
+  "ru": {
+    "nav": {
+      "home": "Главная",
+      "courses": "Курсы",
+      "about": "О нас",
+      "teachers": "Команда",
+      "events": "Мероприятия",
+      "contact": "Контакты"
+    },
+    "welcome": "Добро пожаловать в учебный центр Oxford",
+    "buttons": {
+      "enroll": "Записаться",
+      "contact": "Связаться",
+      "more": "Подробнее",
+      "send": "Отправить",
+      "view_platform": "Посмотреть платформу"
+    },
+    "hero": {
+      "slide1": {
+        "title": "Лучший план уроков.",
+        "desc": "В нашем учебном центре используются самые современные и эффективные планы уроков."
+      }
+    },
+    "sections": {
+      "benefits": "Наши преимущества",
+      "benefits_title": "Почему именно Oxford?",
+      "teachers": "Наши Учителя",
+      "teachers_title": "Учитесь у экспертов отрасли",
+      "results": "Наши Результаты",
+      "results_title": "Результаты IELTS наших студентов",
+      "faq": "FAQ",
+      "faq_title": "Часто задаваемые вопросы",
+      "events": "Объявления",
+      "events_title": "Последние события",
+      "contact": "Контакты",
+      "courses": "Наши направления курсов"
+    },
+    "team_cats": {
+      "creator": "Создатели",
+      "manager": "Менеджеры",
+      "head_of_edu": "Учебные руководители",
+      "branch_head": "Руководители филиалов",
+      "teacher": "Учителя"
+    },
+    "modal": {
+      "title": "Записаться на бесплатный урок",
+      "subtitle": "Оставьте свои данные, и мы свяжемся с вами.",
+      "name_label": "Ваше имя",
+      "phone_label": "Номер телефона",
+      "course_label": "Выберите курс",
+      "time_label": "Время",
+      "select_placeholder": "Выбрать...",
+      "sending": "Отправка...",
+      "success": "Успешно отправлено!",
+      "error_name": "Пожалуйста, введите ваше имя",
+      "error_phone": "Неверный номер телефона",
+      "error_course": "Пожалуйста, выберите курс",
+      "times": {
+        "morning": "Утро",
+        "afternoon": "День",
+        "evening": "Вечер"
+      }
+    },
+    "footer": {
+      "desc": "Стройте свое будущее вместе с нами. Самая современная методика обучения, профессиональные преподаватели и среда, соответствующая международным стандартам.",
+      "pages": "Страницы",
+      "contact": "Контакты",
+      "address": "г. Ташкент, Чиланзарский район, улица Катартал",
+      "rights": "Все права защищены.",
+      "privacy": "Политика конфиденциальности",
+      "terms": "Условия использования"
+    },
+    "benefits": {
+      "app": {
+        "tag": "Цифровая платформа",
+        "title": "Student App — все в одном месте",
+        "desc": "Задания, словари и AI-помощник Harry с персональными уроками теперь в вашем телефоне."
+      },
+      "prize": {
+        "tag": "РОЗЫГРЫШ",
+        "title": "IELTS 9.0 = BYD Chazor",
+        "desc": "Специальный подарок в виде автомобиля для студентов, показавших самые высокие результаты в нашем центре."
+      },
+      "experts": {
+        "title": "Учителя топ-уровня",
+        "desc": "С каждым студентом индивидуально работают до 3 профессиональных специалистов."
+      },
+      "support": {
+        "title": "Академическая поддержка",
+        "desc": "Учителя-ассистенты всегда готовы помочь разобрать темы, не понятые после занятий."
+      },
+      "ieltsx": {
+        "tag": "ЭКСКЛЮЗИВ",
+        "title": "© Программа IELTS X",
+        "desc": "Авторская методика обучения, разработанная носителями языка."
+      },
+      "register": {
+        "title": "Зарегистрируйтесь на спецсобытие",
+        "desc": "Не пропустите предстоящие мастер-классы."
+      }
+    },
+    "teamSubtitle": "Профессиональная команда, работающая на ваш результат.",
+    "about": {
+      "title": "О НАС",
+      "subtitle": "Учебный центр Oxford — фундамент вашего успешного будущего.",
+      "description": "Учебный центр Oxford предоставляет высококачественное образование молодежи Узбекистана с 2013 года. Наша цель — обучать каждого студента иностранным языкам по современным методикам и повышать их интеллектуальный потенциал. С 13-летним опытом работы и более чем 600 профессиональными преподавателями, мы гарантируем вам лучший результат.",
+      "stats": {
+        "branches": "Филиалы",
+        "staff": "Сотрудники",
+        "experience": "Годы деятельности",
+        "since": "с 2013 года",
+        "students": "Студенты",
+        "graduates": "Выпускники",
+        "more": "Подробнее",
+        "more_desc": "Узнайте больше о нас"
+      },
+      "page": {
+        "hero_badge": "История Oxford",
+        "hero_title": "Как мы начинали?",
+        "hero_subtitle": "13 лет опыта, тысячи историй успеха и твердая вера в будущее.",
+        "stat_branch": "Филиал",
+        "stat_staff": "Сотрудники",
+        "stat_graduates": "Выпускники",
+        "timeline_title": "Путь к успеху",
+        "gallery_title": "Крупные проекты и мероприятия",
+        "gallery_desc": "Конференция с тысячами студентов и специалистов.",
+        "branches_title": "Наши Филиалы",
+        "videos_title": "Видео Галерея",
+        "milestones": [
+          { "year": "2013", "title": "Первые шаги", "desc": "Первый филиал учебного центра Oxford начал свою деятельность в Ташкенте." },
+          { "year": "2015", "title": "Расширение", "desc": "Открытие второго филиала и первых подготовительных курсов IELTS." },
+          { "year": "2017", "title": "Инновации", "desc": "Запущена первая версия платформы Student App." },
+          { "year": "2020", "title": "Пандемия и онлайн-обучение", "desc": "Система дистанционного обучения была усовершенствована, и все уроки перешли в цифровой формат." },
+          { "year": "2022", "title": "10-й филиал", "desc": "Наш учебный центр торжественно открыл свой 10-летний юбилейный филиал." },
+          { "year": "2024", "title": "Новые вершины", "desc": "Подарки в виде автомобилей BYD, 600+ сотрудников и 13 филиалов по всей республике." }
+        ]
+      }
+    },
+    "results": {
+      "badge": "Успех",
+      "desc": "В прошлом году более 500 наших студентов получили международные сертификаты.",
+      "stat1": "IELTS 7.0+",
+      "stat2": "Национальный сертификат",
+      "stat3": "Поступление в университет"
+    },
+    "filters": {
+      "all": "Все"
+    },
+    "contact": {
+      "badge": "Контакты",
+      "hero_title": "Свяжитесь с нами",
+      "hero_subtitle": "Есть вопросы? Напишите или позвоните нам.",
+      "info": {
+        "phone": "Телефон",
+        "email": "Email",
+        "address": "Адрес",
+        "main_label": "Главный филиал (Алгоритм)",
+        "main_val": "г. Ташкент, Чиланзарский район, 9-квартал, Алгоритм"
+      },
+      "form": {
+        "name": "Ваше имя",
+        "name_placeholder": "Имя и фамилия",
+        "phone": "Телефон",
+        "phone_placeholder": "+998",
+        "message": "Сообщение",
+        "message_placeholder": "Что вас интересует?",
+        "send": "Отправить сообщение",
+        "success": "Ваше сообщение отправлено! Мы ответим в ближайшее время."
+      },
+      "branches_title": "Наши Филиалы"
+    }
+  }
+}
