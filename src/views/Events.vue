@@ -81,6 +81,7 @@ const categories = computed(() => {
     { id: 'all', label: locale.value === 'uz' ? 'Barchasi' : (locale.value === 'en' ? 'All' : 'Все') },
     { id: 'Master-klass', label: locale.value === 'uz' ? 'Master-klass' : (locale.value === 'en' ? 'Master-class' : 'Мастер-класс') },
     { id: 'Speaking Club', label: 'Speaking Club' },
+    { id: 'Mock Exam', label: 'Mock Exam' },
     { id: 'Imtihon', label: locale.value === 'uz' ? 'Imtihon' : (locale.value === 'en' ? 'Exam' : 'Экзамен') },
     { id: 'Sayohat', label: locale.value === 'uz' ? 'Sayohat' : (locale.value === 'en' ? 'Travel' : 'Путешествие') }
   ]
@@ -98,9 +99,20 @@ const getLoc = (obj) => {
 }
 
 const formatDate = (dateStr, format) => {
+  if (!dateStr) return ''
   const date = new Date(dateStr)
+  if (isNaN(date.getTime())) return dateStr
+
   if (format === 'D') return date.getDate()
-  if (format === 'MMM') return date.toLocaleString(locale.value, { month: 'short' })
+  if (format === 'MMM') {
+    const monthNames = {
+      uz: ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek'],
+      en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      ru: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
+    }
+    const currentLoc = locale.value || 'uz'
+    return monthNames[currentLoc][date.getMonth()]
+  }
   return date.toLocaleDateString()
 }
 </script>

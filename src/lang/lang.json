@@ -145,7 +145,12 @@
       "stat3": "Universitetga qabul"
     },
     "filters": {
-      "all": "Barchasi"
+      "all": "Barchasi",
+      "exact": "Aniq fanlar",
+      "natural": "Tabiiy fanlar",
+      "langs": "Tillar",
+      "humanities": "Ijtimoiy fanlar",
+      "new_groups": "Yangi guruhlar"
     },
     "contact": {
       "badge": "Aloqa",
@@ -317,7 +322,12 @@
       "stat3": "University Admission"
     },
     "filters": {
-      "all": "All"
+      "all": "All",
+      "exact": "Exact Sciences",
+      "natural": "Natural Sciences",
+      "langs": "Languages",
+      "humanities": "Humanities",
+      "new_groups": "New Groups"
     },
     "contact": {
       "badge": "Contact",
@@ -489,7 +499,12 @@
       "stat3": "Поступление в университет"
     },
     "filters": {
-      "all": "Все"
+      "all": "Все",
+      "exact": "Точные науки",
+      "natural": "Естественные науки",
+      "langs": "Языки",
+      "humanities": "Гуманитарные науки",
+      "new_groups": "Новые группы"
     },
     "contact": {
       "badge": "Контакты",

@@ -13,7 +13,7 @@
             <span class="card-tag">{{ $t('benefits.app.tag') }}</span>
             <h3>{{ $t('benefits.app.title') }}</h3>
             <p>{{ $t('benefits.app.desc') }}</p>
-            <button class="btn-action">{{ $t('buttons.view_platform') }}</button>
+            <button class="btn-action" @click="modalStore.openModal($t('benefits.app.title'))">{{ $t('buttons.view_platform') }}</button>
           </div>
           <div class="app-visual">
             <div class="phone-frame">
@@ -64,7 +64,7 @@
         </div>
 
         <!-- 6. Special Event Action (Small Card for Empty Slot) -->
-        <div class="benefit-card register-card">
+        <div class="benefit-card register-card" @click="modalStore.openModal($t('benefits.register.title'))">
           <div class="icon-header">
             <div class="icon-circle">
               <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -80,6 +80,10 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { modalStore } from '../utils/modalStore'
+</script>
 
 <style scoped>
 .benefits-section {

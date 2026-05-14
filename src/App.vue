@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" :key="currentLocale">
     <MainHeader />
     <router-view />
     <MainFooter />
@@ -11,6 +11,7 @@
 import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
 import RegistrationModal from './components/RegistrationModal.vue'
+import { currentLocale } from './utils/localeStore'
 </script>
 
 <style>

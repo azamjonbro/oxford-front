@@ -73,8 +73,9 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
+import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
 
-const { locale } = useI18n()
+const { locale } = useI18n({ useScope: 'global' })
 const teachers = ref([])
 
 onMounted(async () => {
@@ -98,10 +99,7 @@ onMounted(async () => {
   }
 })
 
-const getLoc = (obj) => {
-  if (!obj) return ''
-  return obj[locale.value] || obj['uz'] || ''
-}
+const getLoc = (obj) => getLocHelper(obj, currentLocale)
 </script>
 
 <style scoped>

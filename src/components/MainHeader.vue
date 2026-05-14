@@ -18,6 +18,10 @@
           {{ $t('nav.teachers') }}
           <div class="active-line"></div>
         </router-link>
+        <router-link to="/events" class="nav-link" active-class="active">
+          {{ $t('nav.events') }}
+          <div class="active-line"></div>
+        </router-link>
         <router-link to="/about" class="nav-link" active-class="active">
           {{ $t('nav.about') }}
           <div class="active-line"></div>
@@ -30,11 +34,17 @@
 
       <!-- Right: Lang -->
       <div class="nav-right">
-        <div class="lang-box">
+        <div class="lang-box" @click="toggleLangMenu">
           <button class="lang-btn">
-            {{ $i18n.locale.toUpperCase() }}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            {{ currentLocale.toUpperCase() }}
+            <svg :class="{'rotated': isLangOpen}" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
+
+          <div class="lang-dropdown" v-if="isLangOpen">
+            <div class="lang-item" @click.stop="changeLang('uz')">UZ</div>
+            <div class="lang-item" @click.stop="changeLang('en')">EN</div>
+            <div class="lang-item" @click.stop="changeLang('ru')">RU</div>
+          </div>
         </div>
       </div>
     </div>
@@ -46,25 +56,43 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { currentLocale, setLocale } from '../utils/localeStore'
 
-const { t } = useI18n()
 const isScrolled = ref(false)
 const scrollProgress = ref(0)
+const isLangOpen = ref(false)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+  const winScroll = document.documentElement.scrollTop
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
   scrollProgress.value = (winScroll / height) * 100
 }
 
+const toggleLangMenu = () => {
+  isLangOpen.value = !isLangOpen.value
+}
+
+// setLocale updates both currentLocale and i18n global locale
+const changeLang = (lang) => {
+  setLocale(lang)
+  isLangOpen.value = false
+}
+
+const closeDropdown = (e) => {
+  if (!e.target.closest('.lang-box')) {
+    isLangOpen.value = false
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('click', closeDropdown)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('click', closeDropdown)
 })
 </script>
 
@@ -138,7 +166,6 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 }
 
-/* Active Link Styling */
 .nav-link.active {
   color: #0056ff;
 }
@@ -152,6 +179,9 @@ onUnmounted(() => {
   background: #f0f7ff;
   border-radius: 12px;
   padding: 0.6rem 1.2rem;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
 }
 
 .lang-btn {
@@ -163,6 +193,43 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.6rem;
   cursor: pointer;
+}
+
+.lang-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.lang-btn svg.rotated {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.lang-item {
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lang-item:hover {
+  background: #f0f7ff;
+  color: #0056ff;
 }
 
 .scroll-progress {

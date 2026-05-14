@@ -98,12 +98,13 @@
       <div class="container">
         <div class="map-container">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!2s41.272186!2s69.176461!5e0!3m2!1sen!2suz!4v1640000000000!5m2!1sen!2suz" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24089.899358713723!2d71.64622019907004!3d40.998176388394334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4d005a97f19d%3A0xe2fa3ed041c1f74c!2sNew%20OXFORD%20-%20o&#39;quv%20markazi%20(Asosiy)!5e0!3m2!1sru!2s!4v1778456114871!5m2!1sru!2s" 
             width="100%" 
             height="100%" 
-            style="border:0; border-radius: 30px;" 
+            style="border:0; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.1);" 
             allowfullscreen="" 
-            loading="lazy"
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
@@ -115,8 +116,9 @@
 import { reactive, ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
+import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
 
-const { locale, t } = useI18n()
+const { t, locale } = useI18n({ useScope: 'global' })
 const branches = ref([])
 
 const form = reactive({
@@ -134,10 +136,7 @@ onMounted(async () => {
   }
 })
 
-const getLoc = (obj) => {
-  if (!obj) return ''
-  return obj[locale.value] || obj['uz'] || ''
-}
+const getLoc = (obj) => getLocHelper(obj, currentLocale)
 
 const handleSubmit = () => {
   alert(t('contact.form.success'))
@@ -367,7 +366,7 @@ input, textarea {
 }
 
 .map-container {
-  height: 400px;
+  height: 500px;
   background: var(--color-bg-2);
   border-radius: 30px;
   display: flex;

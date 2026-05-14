@@ -7,7 +7,7 @@
       </div>
 
       <div class="events-list">
-        <div v-for="event in events" :key="event._id" class="event-row">
+        <div v-for="event in events" :key="event._id" class="event-row" @click="modalStore.openModal(getLoc(event.title))">
           <div class="event-date">
             <span class="day">{{ formatDate(event.date, 'D') }}</span>
             <span class="month">{{ formatDate(event.date, 'MMM') }}</span>
@@ -38,6 +38,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
+import { modalStore } from '../utils/modalStore'
 
 const { locale } = useI18n()
 const events = ref([])
@@ -59,12 +60,18 @@ const getLoc = (obj) => {
 const formatDate = (dateStr, format) => {
   if (!dateStr) return ''
   const date = new Date(dateStr)
-  if (isNaN(date.getTime())) {
-    // If it's not a valid date string (e.g. "Aprel"), just return it or parts of it
-    return dateStr
-  }
+  if (isNaN(date.getTime())) return dateStr
+
   if (format === 'D') return date.getDate()
-  if (format === 'MMM') return date.toLocaleString(locale.value, { month: 'short' })
+  if (format === 'MMM') {
+    const monthNames = {
+      uz: ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek'],
+      en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      ru: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
+    }
+    const currentLoc = locale.value || 'uz'
+    return monthNames[currentLoc][date.getMonth()]
+  }
   return date.toLocaleDateString()
 }
 </script>

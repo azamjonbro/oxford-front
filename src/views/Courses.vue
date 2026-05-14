@@ -51,8 +51,13 @@
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     <span>{{ getLoc(course.duration) }}</span>
                   </div>
-                  <div class="meta-item">
-                    <span>{{ course.price }} UZS</span>
+                  <div class="meta-item" v-if="course.time">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <span>{{ course.time }}</span>
+                  </div>
+                  <div class="meta-item" v-if="course.seats">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span>{{ course.seats }} ta joy</span>
                   </div>
                 </div>
 
@@ -71,8 +76,9 @@ import { ref, computed, onMounted, h } from 'vue'
 import { modalStore } from '../utils/modalStore'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
+import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
 
-const { locale } = useI18n()
+const { t, locale } = useI18n({ useScope: 'global' })
 const activeCategory = ref('all')
 const courses = ref([])
 
@@ -86,11 +92,12 @@ onMounted(async () => {
 })
 
 const categories = computed(() => [
-  { id: 'all', label: locale.value === 'uz' ? 'Barchasi' : (locale.value === 'en' ? 'All' : 'Все') },
-  { id: 'exact', label: locale.value === 'uz' ? 'Aniq fanlar' : (locale.value === 'en' ? 'Exact Sciences' : 'Точные науки') },
-  { id: 'natural', label: locale.value === 'uz' ? 'Tabiiy fanlar' : (locale.value === 'en' ? 'Natural Sciences' : 'Естественные науки') },
-  { id: 'langs', label: locale.value === 'uz' ? 'Tillar' : (locale.value === 'en' ? 'Languages' : 'Языки') },
-  { id: 'humanities', label: locale.value === 'uz' ? 'Ijtimoiy fanlar' : (locale.value === 'en' ? 'Humanities' : 'Гуманитарные науки') }
+  { id: 'all', label: t('filters.all') },
+  { id: 'exact', label: t('filters.exact') },
+  { id: 'natural', label: t('filters.natural') },
+  { id: 'langs', label: t('filters.langs') },
+  { id: 'humanities', label: t('filters.humanities') },
+  { id: 'new_groups', label: t('filters.new_groups') }
 ])
 
 // Icons
@@ -99,10 +106,7 @@ const IconMath = () => h('svg', { viewBox: '0 0 24 24', fill: 'none', stroke: 'c
   h('path', { d: 'M5 12h14' })
 ])
 
-const getLoc = (obj) => {
-  if (!obj) return ''
-  return obj[locale.value] || obj['uz'] || ''
-}
+const getLoc = (obj) => getLocHelper(obj, currentLocale)
 
 const filteredCourses = computed(() => {
   if (activeCategory.value === 'all') return courses.value
