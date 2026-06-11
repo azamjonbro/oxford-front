@@ -89,7 +89,7 @@
             </div>
             <div class="branch-photos">
               <div v-for="(img, idx) in branch.images" :key="idx" class="photo-item">
-                <img :src="'http://localhost:5010' + img" alt="Branch">
+                <img :src="BACKEND_URL + img" alt="Branch">
               </div>
             </div>
           </div>
@@ -126,6 +126,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { BACKEND_URL } from '../services/api'
 import { useI18n } from 'vue-i18n'
 import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
 
@@ -136,8 +137,8 @@ const videos = ref([])
 onMounted(async () => {
   try {
     const [bRes, vRes] = await Promise.all([
-      axios.get('http://localhost:5010/api/branches'),
-      axios.get('http://localhost:5010/api/videos')
+      axios.get(`${BACKEND_URL}/api/branches`),
+      axios.get(`${BACKEND_URL}/api/videos`)
     ])
     branches.value = bRes.data
     videos.value = vRes.data
@@ -151,6 +152,7 @@ const getLoc = (obj) => getLocHelper(obj, currentLocale)
 
 <style scoped>
 .video-gallery {
+   
   padding: 80px 0 120px;
   background: var(--color-bg-2);
 }
@@ -163,6 +165,7 @@ const getLoc = (obj) => getLocHelper(obj, currentLocale)
 }
 
 .video-card {
+   
   background: white;
   border-radius: 24px;
   overflow: hidden;
@@ -175,6 +178,7 @@ const getLoc = (obj) => getLocHelper(obj, currentLocale)
 }
 
 .video-wrapper {
+ 
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;

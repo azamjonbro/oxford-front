@@ -35,6 +35,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { BACKEND_URL } from '../services/api'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
 
@@ -44,7 +45,7 @@ const activeIndex = ref(-1)
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/faqs')
+    const res = await axios.get(`${BACKEND_URL}/api/faqs`)
     faqs.value = res.data
   } catch (error) {
     console.error('Failed to load FAQs', error)

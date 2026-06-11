@@ -102,3 +102,58 @@ img { max-width: 100%; height: auto; display: block; }
   line-height: 1.1;
   color: var(--color-text-1);
 }
+
+.mouse-circle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+
+  border-radius: 50%;
+  
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 85, 255, 0.35),
+    rgba(0, 85, 255, 0.08)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  box-shadow:
+    0 0 20px rgba(0, 85, 255, 0.35),
+    0 0 60px rgba(0, 85, 255, 0.15),
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+
+  /* transition:
+    transform 0.08s linear,
+    width 0.2s ease,
+    height 0.2s ease,
+    background 0.2s ease; */
+}
+
+.hide-mouse-circle .mouse-circle {
+  opacity: 0;
+  /* transition: opacity 0.2s ease; */
+}
+
+.mouse-circle.active {
+  width: 65px;
+  height: 65px;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 85, 255, 0.45),
+    rgba(0, 85, 255, 0.12)
+  );
+
+  box-shadow:
+    0 0 30px rgba(0, 85, 255, 0.5),
+    0 0 80px rgba(0, 85, 255, 0.2);
+}

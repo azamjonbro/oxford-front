@@ -4,6 +4,7 @@
       <div class="section-header">
         <span class="badge">{{ $t('nav.events') }}</span>
         <h2 class="title">{{ $t('sections.events') }}</h2>
+        <br>
       </div>
 
       <div class="events-list">
@@ -36,6 +37,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { BACKEND_URL } from '../services/api'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
 import { modalStore } from '../utils/modalStore'
@@ -45,7 +47,7 @@ const events = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/events')
+    const res = await axios.get(`${BACKEND_URL}/api/events`)
     events.value = res.data.slice(0, 3)
   } catch (error) {
     console.error('Failed to load events', error)

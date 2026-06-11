@@ -4,6 +4,13 @@
     <router-view />
     <MainFooter />
     <RegistrationModal />
+
+    <!-- Cursor circle — test sahifalarida yashiriladi -->
+    <div
+      v-show="!isTestRoute"
+      class="mouse-circle"
+      :style="{ left: mouseX + 'px', top: mouseY + 'px' }"
+    ></div>
   </div>
 </template>
 
@@ -11,9 +18,57 @@
 import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
 import RegistrationModal from './components/RegistrationModal.vue'
-import { currentLocale } from './utils/localeStore'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { currentLocale } from './utils/localeStore.js'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+// Test sahifalarida cursor shadow ko'rinmaydi
+const isTestRoute = computed(() =>
+  route.path.startsWith('/test')
+)
+
+const mouseX = ref(0)
+const mouseY = ref(0)
+
+const targetX = ref(0)
+const targetY = ref(0)
+
+function updateMouse(e) {
+  targetX.value = e.clientX
+  targetY.value = e.clientY
+}
+
+// smooth animation (pro feel)
+function animate() {
+  mouseX.value += (targetX.value - mouseX.value) * 0.12
+  mouseY.value += (targetY.value - mouseY.value) * 0.12
+  requestAnimationFrame(animate)
+}
+
+onMounted(() => {
+  window.addEventListener('mousemove', updateMouse)
+  animate()
+
+  // hover interaction
+  const circle = document.querySelector('.mouse-circle')
+  document.querySelectorAll('a, button').forEach((el) => {
+    el.addEventListener('mouseenter', () => circle?.classList.add('active'))
+    el.addEventListener('mouseleave', () => circle?.classList.remove('active'))
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', updateMouse)
+})
 </script>
 
 <style>
-/* Global styles moved to src/assets/style/main.css */
+.app-container {
+  padding-top: 90px;
+}
+
+/* ===== CURSOR ===== */
+
 </style>

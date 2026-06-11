@@ -6,7 +6,9 @@
       "about": "Biz haqimizda",
       "teachers": "Jamoa",
       "events": "Tadbirlar",
-      "contact": "Aloqa"
+      "result": "Natijalar",
+      "contact": "Aloqa",
+      "test": "Daraja testi"
     },
     "welcome": "Oxford o'quv markaziga xush kelibsiz",
     "buttons": {
@@ -14,7 +16,7 @@
       "contact": "Bog'lanish",
       "more": "Batafsil",
       "send": "Yuborish",
-      "view_platform": "Platformani ko'rish"
+      "view_platform": "Sinab ko'rish"
     },
     "hero": {
       "slide1": {
@@ -45,7 +47,7 @@
     },
     "modal": {
       "title": "Bepul darsga yozilish",
-      "subtitle": "Ma'lumotlaringizni qoldiring, biz bog'lanamiz.",
+      "subtitle": "Ilovadan foydalanish uchun Oxford o'quvchisi bo'lishingiz kerak. O'quvchilarimiz safiga qo'shilish uchun ro'yxatdan o'ting",
       "name_label": "Ismingiz",
       "phone_label": "Telefon raqam",
       "course_label": "Kursni tanlang",
@@ -74,12 +76,12 @@
     "benefits": {
       "app": {
         "tag": "Digital Platform",
-        "title": "Student App — hamma narsa bir joyda",
+        "title": "Oxford Student App — hamma narsa bir joyda",
         "desc": "Vazifalar, lug'atlar va AI yordamchi Harry bilan shaxsiy mashg'ulotlar endi telefoningizda."
       },
       "prize": {
-        "tag": "GIVEAWAY",
-        "title": "IELTS 9.0 = BYD Chazor",
+        "tag": "Mukofot",
+        "title": "IELTS 9.0 =  ONIX",
         "desc": "Bizning markazda eng yuqori natija ko'rsatgan o'quvchilar uchun maxsus avtomobil sovg'asi."
       },
       "experts": {
@@ -92,8 +94,8 @@
       },
       "ieltsx": {
         "tag": "EXCLUSIVE",
-        "title": "© IELTS X Dasturi",
-        "desc": "Native speakerlar tomonidan ishlab chiqilgan mualliflik o'quv metodikasi."
+        "title": "© IELTS MAX Dasturi",
+        "desc": "10+ yil tajribaga ega ustozlar tomonidan ishlab chiqilgan mualliflik o'quv metodikasi."
       },
       "register": {
         "title": "Maxsus tadbirga yoziling",
@@ -103,13 +105,13 @@
     "teamSubtitle": "Sizning natijangiz uchun harakat qiladigan professional jamoa.",
     "about": {
       "title": "BIZ HAQIMIZDA",
-      "subtitle": "Oxford o'quv markazi — sizning muvaffaqiyatli kelajagingiz poydevori.",
-      "description": "Oxford o'quv markazi 2013-yildan buyon O'zbekiston yoshlariga yuqori sifatli ta'lim berib kelmoqda. Bizning maqsadimiz — har bir o'quvchiga zamonaviy metodikalar asosida xorijiy tillarni o'rgatish va ularning intellektual salohiyatini oshirishdir. 13 yillik tajribamiz va 600 dan ortiq professional ustozlarimiz bilan biz sizga eng yaxshi natijani kafolatlaymiz.",
+      "subtitle": "OXFORD — zamonaviy ta’lim va haqiqiy natijalar markazi",
+      "description": "2023-yildan buyon Namanganda faoliyat yuritayotgan OXFORD o‘quv markazi 10 000 dan ortiq o‘quvchilarga sifatli ta’lim berib kelmoqda. Markazimizda ingliz tili, rus tili, axborot texnologiyalari va DTM fanlari bo‘yicha xalqaro standartlarga asoslangan professional kurslar tashkil etilgan. 100 dan ortiq tajribali ustozlar jamoasi, IELTS 8.5 gacha natijaga ega murabbiylar va zamonaviy o‘qitish metodikasi orqali o‘quvchilarning bilim va ko‘nikmalarini rivojlantirishga alohida e’tibor qaratamiz. OXFORD — bu bilim, motivatsiya va haqiqiy natijalar uyg‘unlashgan zamonaviy ta’lim tizimi.",
       "stats": {
         "branches": "Filiallar",
         "staff": "Xodimlar",
         "experience": "Faoliyat davri",
-        "since": "since 2013",
+        "since": "Since 2023",
         "students": "O'quvchilar",
         "graduates": "Bitiruvchilar",
         "more": "Batafsil",
@@ -130,16 +132,16 @@
         "milestones": [
           { "year": "2013", "title": "Ilk qadamlar", "desc": "Toshkent shahrida ilk Oxford o'quv markazi filiali o'z faoliyatini boshladi." },
           { "year": "2015", "title": "Kengayish", "desc": "Ikkinchi filial va ilk IELTS tayyorlov kurslarining yo'lga qo'yilishi." },
-          { "year": "2017", "title": "Innovatsiyalar", "desc": "Student App platformasining ilk versiyasi ishga tushirildi." },
+          { "year": "2017", "title": "Innovatsiyalar", "desc": "Oxford Student App platformasining ilk versiyasi ishga tushirildi." },
           { "year": "2020", "title": "Global pandemiya va Online ta'lim", "desc": "Masofaviy ta'lim tizimi mukammallashtirildi va barcha darslar raqamli formatga o'tdi." },
           { "year": "2022", "title": "10-filial", "desc": "O'quv markazimiz 10-yubiley filialini tantanali ravishda ochdi." },
-          { "year": "2024", "title": "Yangi cho'qqilar", "desc": "BYD avtomobil sovg'alari, 600+ xodim va respublika bo'ylab 13 ta filial." }
+          { "year": "2024", "title": "Yangi cho'qqilar", "desc": "ONIX avtomobil sovg'alari, 600+ xodim va respublika bo'ylab 13 ta filial." }
         ]
       }
     },
     "results": {
       "badge": "Muvaffaqiyat",
-      "desc": "O'tgan yili o'quvchilarimizdan 500+ nafari xalqaro sertifikatlarni qo'lga kiritishdi.",
+      "desc": "Oxford o'quv markazi o'quvchilarining natijalari.",
       "stat1": "IELTS 7.0+",
       "stat2": "Milliy sertifikat",
       "stat3": "Universitetga qabul"
@@ -174,6 +176,17 @@
         "success": "Xabaringiz yuborildi! Tez orada javob beramiz."
       },
       "branches_title": "Bizning Filiallar"
+    },
+    "not_found": {
+      "title": "Sahifa topilmadi",
+      "desc": "Afsuski, siz qidirayotgan sahifa mavjud emas yoki boshqa manzilga ko'chirilgan.",
+      "button": "Bosh sahifaga qaytish"
+    },
+    "results_page": {
+      "title": "Muvaffaqiyatimizning<br />Haqiqiy Isbotlari",
+      "desc": "O'quvchilarimiz tomonidan qo'lga kiritilgan IELTS sertifikatlari va yuqori ballar — bizning sifatli ta'limimiz natijasidir.",
+      "loading": "Natijalar yuklanmoqda...",
+      "empty": "Hozircha natijalar mavjud emas."
     }
   },
   "en": {
@@ -183,7 +196,9 @@
       "about": "About Us",
       "teachers": "Team",
       "events": "Events",
-      "contact": "Contact"
+      "result": "Results",
+      "contact": "Contact",
+      "test": "Placement Test"
     },
     "welcome": "Welcome to Oxford Learning Center",
     "buttons": {
@@ -191,7 +206,7 @@
       "contact": "Contact",
       "more": "More",
       "send": "Send",
-      "view_platform": "View Platform"
+      "view_platform": "Try it"
     },
     "hero": {
       "slide1": {
@@ -222,7 +237,7 @@
     },
     "modal": {
       "title": "Register for a free lesson",
-      "subtitle": "Leave your information and we will contact you.",
+      "subtitle": "To use the application, you must be a student of the Oxford learning center. To join our students, please register.",
       "name_label": "Your Name",
       "phone_label": "Phone Number",
       "course_label": "Select Course",
@@ -251,12 +266,12 @@
     "benefits": {
       "app": {
         "tag": "Digital Platform",
-        "title": "Student App — everything in one place",
+        "title": "Oxford Student App — everything in one place",
         "desc": "Tasks, dictionaries and AI assistant Harry with personal lessons are now on your phone."
       },
       "prize": {
-        "tag": "GIVEAWAY",
-        "title": "IELTS 9.0 = BYD Chazor",
+        "tag": "Prize",
+        "title": "IELTS 9.0 =  ONIX",
         "desc": "A special car gift for students who show the highest results in our center."
       },
       "experts": {
@@ -269,8 +284,8 @@
       },
       "ieltsx": {
         "tag": "EXCLUSIVE",
-        "title": "© IELTS X Program",
-        "desc": "Author's teaching methodology developed by native speakers."
+        "title": "© IELTS MAX Program",
+        "desc": "Author's teaching methodology developed by 10 years experience mentors."
       },
       "register": {
         "title": "Register for a special event",
@@ -280,13 +295,13 @@
     "teamSubtitle": "A professional team working for your results.",
     "about": {
       "title": "ABOUT US",
-      "subtitle": "Oxford Learning Center — the foundation of your successful future.",
-      "description": "Oxford Learning Center has been providing high-quality education to the youth of Uzbekistan since 2013. Our goal is to teach foreign languages to every student based on modern methodologies and increase their intellectual potential. With 13 years of experience and more than 600 professional teachers, we guarantee you the best results.",
+      "subtitle": "OXFORD — A Modern Education and Real Results Center",
+      "description": "Since 2023, OXFORD Learning Center in Namangan has been providing quality education to more than 10,000 students. Our center offers professional courses in English, Russian, Information Technology, and DTM subjects based on international educational standards. With a team of more than 100 experienced teachers, mentors with IELTS scores up to 8.5, and modern teaching methodologies, we focus on developing students’ knowledge and practical skills effectively. OXFORD is a modern educational system where knowledge, motivation, and real results come together.",
       "stats": {
         "branches": "Branches",
         "staff": "Staff",
         "experience": "Years of activity",
-        "since": "since 2013",
+        "since": "Since 2023",
         "students": "Students",
         "graduates": "Graduates",
         "more": "More",
@@ -307,16 +322,16 @@
         "milestones": [
           { "year": "2013", "title": "First steps", "desc": "The first Oxford training center branch started its activities in Tashkent." },
           { "year": "2015", "title": "Expansion", "desc": "Opening of the second branch and the first IELTS preparatory courses." },
-          { "year": "2017", "title": "Innovations", "desc": "The first version of the Student App platform was launched." },
+          { "year": "2017", "title": "Innovations", "desc": "The first version of the Oxford Student App platform was launched." },
           { "year": "2020", "title": "Global Pandemic and Online Education", "desc": "The remote education system was improved and all lessons were moved to digital format." },
           { "year": "2022", "title": "10th branch", "desc": "Our training center solemnly opened its 10th anniversary branch." },
-          { "year": "2024", "title": "New heights", "desc": "BYD car gifts, 600+ staff and 13 branches across the republic." }
+          { "year": "2024", "title": "New heights", "desc": "ONIX car gifts, 600+ staff and 13 branches across the republic." }
         ]
       }
     },
     "results": {
       "badge": "Success",
-      "desc": "Last year, 500+ of our students achieved international certificates.",
+      "desc": "Results of students of the Oxford learning center.",
       "stat1": "IELTS 7.0+",
       "stat2": "National Certificate",
       "stat3": "University Admission"
@@ -351,6 +366,17 @@
         "success": "Your message has been sent! We will reply soon."
       },
       "branches_title": "Our Branches"
+    },
+    "not_found": {
+      "title": "Page Not Found",
+      "desc": "Unfortunately, the page you are looking for does not exist or has been moved to another address.",
+      "button": "Back to Home"
+    },
+    "results_page": {
+      "title": "Real Proof<br />of Our Success",
+      "desc": "IELTS certificates and high scores achieved by our students are the result of our quality education.",
+      "loading": "Loading results...",
+      "empty": "No results available yet."
     }
   },
   "ru": {
@@ -360,7 +386,9 @@
       "about": "О нас",
       "teachers": "Команда",
       "events": "Мероприятия",
-      "contact": "Контакты"
+      "result": "Результаты",
+      "contact": "Контакты",
+      "test": "Тестирование"
     },
     "welcome": "Добро пожаловать в учебный центр Oxford",
     "buttons": {
@@ -368,7 +396,7 @@
       "contact": "Связаться",
       "more": "Подробнее",
       "send": "Отправить",
-      "view_platform": "Посмотреть платформу"
+      "view_platform": "Давай попробуем."
     },
     "hero": {
       "slide1": {
@@ -399,7 +427,7 @@
     },
     "modal": {
       "title": "Записаться на бесплатный урок",
-      "subtitle": "Оставьте свои данные, и мы свяжемся с вами.",
+      "subtitle": "Чтобы пользоваться приложением, вы должны быть учеником учебного центра Oxford. Чтобы присоединиться к нашим ученикам, пройдите регистрацию.",
       "name_label": "Ваше имя",
       "phone_label": "Номер телефона",
       "course_label": "Выберите курс",
@@ -428,12 +456,12 @@
     "benefits": {
       "app": {
         "tag": "Цифровая платформа",
-        "title": "Student App — все в одном месте",
+        "title": "Oxford Student App — все в одном месте",
         "desc": "Задания, словари и AI-помощник Harry с персональными уроками теперь в вашем телефоне."
       },
       "prize": {
         "tag": "РОЗЫГРЫШ",
-        "title": "IELTS 9.0 = BYD Chazor",
+        "title": "IELTS 9.0 = ONIX",
         "desc": "Специальный подарок в виде автомобиля для студентов, показавших самые высокие результаты в нашем центре."
       },
       "experts": {
@@ -446,8 +474,8 @@
       },
       "ieltsx": {
         "tag": "ЭКСКЛЮЗИВ",
-        "title": "© Программа IELTS X",
-        "desc": "Авторская методика обучения, разработанная носителями языка."
+        "title": "© Программа IELTS MAX",
+        "desc": "Авторская методика обучения от носителей языка."
       },
       "register": {
         "title": "Зарегистрируйтесь на спецсобытие",
@@ -457,13 +485,13 @@
     "teamSubtitle": "Профессиональная команда, работающая на ваш результат.",
     "about": {
       "title": "О НАС",
-      "subtitle": "Учебный центр Oxford — фундамент вашего успешного будущего.",
-      "description": "Учебный центр Oxford предоставляет высококачественное образование молодежи Узбекистана с 2013 года. Наша цель — обучать каждого студента иностранным языкам по современным методикам и повышать их интеллектуальный потенциал. С 13-летним опытом работы и более чем 600 профессиональными преподавателями, мы гарантируем вам лучший результат.",
+      "subtitle": "OXFORD — современный образовательный центр и центр реальных результатов",
+      "description": "С 2023 года учебный центр OXFORD, расположенный в Намангане, предоставляет качественное образование более чем 10 000 учащимся. В нашем центре организованы профессиональные курсы английского языка, русского языка, информационных технологий и предметов ДТМ на основе международных стандартов обучения. Команда из более чем 100 опытных преподавателей, наставники с результатом IELTS до 8.5 и современные методики обучения помогают учащимся эффективно развивать знания и навыки. OXFORD — это современная образовательная система, где объединяются знания, мотивация и реальные результаты.",
       "stats": {
         "branches": "Филиалы",
         "staff": "Сотрудники",
         "experience": "Годы деятельности",
-        "since": "с 2013 года",
+        "since": "с 2023 года",
         "students": "Студенты",
         "graduates": "Выпускники",
         "more": "Подробнее",
@@ -484,16 +512,16 @@
         "milestones": [
           { "year": "2013", "title": "Первые шаги", "desc": "Первый филиал учебного центра Oxford начал свою деятельность в Ташкенте." },
           { "year": "2015", "title": "Расширение", "desc": "Открытие второго филиала и первых подготовительных курсов IELTS." },
-          { "year": "2017", "title": "Инновации", "desc": "Запущена первая версия платформы Student App." },
+          { "year": "2017", "title": "Инновации", "desc": "Запущена первая версия платформы Oxford Student App." },
           { "year": "2020", "title": "Пандемия и онлайн-обучение", "desc": "Система дистанционного обучения была усовершенствована, и все уроки перешли в цифровой формат." },
           { "year": "2022", "title": "10-й филиал", "desc": "Наш учебный центр торжественно открыл свой 10-летний юбилейный филиал." },
-          { "year": "2024", "title": "Новые вершины", "desc": "Подарки в виде автомобилей BYD, 600+ сотрудников и 13 филиалов по всей республике." }
+          { "year": "2024", "title": "Новые вершины", "desc": "Подарки в виде автомобилей ONIX, 600+ сотрудников и 13 филиалов по всей республике." }
         ]
       }
     },
     "results": {
       "badge": "Успех",
-      "desc": "В прошлом году более 500 наших студентов получили международные сертификаты.",
+      "desc": "Результаты учеников учебного центра Oxford.",
       "stat1": "IELTS 7.0+",
       "stat2": "Национальный сертификат",
       "stat3": "Поступление в университет"
@@ -528,6 +556,17 @@
         "success": "Ваше сообщение отправлено! Мы ответим в ближайшее время."
       },
       "branches_title": "Наши Филиалы"
+    },
+    "not_found": {
+      "title": "Страница не найдена",
+      "desc": "К сожалению, страница, которую вы ищете, не существует или была перенесена по другому адресу.",
+      "button": "На главную"
+    },
+    "results_page": {
+      "title": "Реальные доказательства<br />нашего успеха",
+      "desc": "Сертификаты IELTS и высокие баллы, полученные нашими студентами — результат нашего качественного образования.",
+      "loading": "Результаты загружаются...",
+      "empty": "Результаты пока не найдены."
     }
   }
 }

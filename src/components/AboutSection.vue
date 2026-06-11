@@ -58,6 +58,7 @@
 
 <script setup>
 import { h, ref, onMounted } from 'vue'
+import { BACKEND_URL } from '../services/api'
 import axios from 'axios'
 
 const stats = ref([
@@ -70,7 +71,7 @@ const stats = ref([
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/settings')
+    const res = await axios.get(`${BACKEND_URL}/api/settings`)
     const settingsMap = {}
     res.data.forEach(s => settingsMap[s.key] = s.value)
     
@@ -150,6 +151,7 @@ function IconGrad() { return h('svg', { viewBox: '0 0 24 24', width: '24', heigh
 }
 
 .about-video-box {
+  height: 650px;
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;

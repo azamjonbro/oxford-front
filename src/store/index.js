@@ -1,7 +1,9 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-const API_URL = 'http://oxford.techinfo.uz/api'
+import { BACKEND_URL } from '../services/api'
+
+const API_URL = `${BACKEND_URL}/api`
 
 export default createStore({
   state: {

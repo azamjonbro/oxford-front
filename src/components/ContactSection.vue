@@ -3,22 +3,23 @@
     <div class="container">
       <div class="contact-card">
         <div class="contact-info">
-          <span class="badge">{{ $t('nav.contact') }}</span>
-          <h2 class="title">{{ $t('contact.hero_title') }}</h2>
-          <p class="desc">{{ $t('contact.hero_subtitle') }}</p>
+          <span class="badge">Aloqa</span>
+          <h2 class="title">Biz bilan bog'laning</h2>
+          <p class="desc">Savollaringiz bormi? Bizga yozing yoki qo'ng'iroq qiling.</p>
           
           <div class="info-list">
             <div class="info-item">
               <div class="icon-circle">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
-              <span>Chilonzor, Algoritm, 9-kvartal</span>
+              <span>Namangan shaxar alisher navoiy kochasi 11</span>
             </div>
+            <br>
             <div class="info-item">
               <div class="icon-circle">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
-              <span>+998 90 123 45 67</span>
+              <span>+998973701818</span>
             </div>
           </div>
         </div>

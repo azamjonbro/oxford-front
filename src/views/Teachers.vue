@@ -25,7 +25,7 @@
             <template v-if="index === 0 && group.category === 'teacher' && group.members.length > 1">
               <div class="card-inner">
                 <div class="teacher-image">
-                  <img :src="teacher.photo ? 'http://localhost:5010' + teacher.photo : 'https://picsum.photos/800/800?random=' + index" :alt="getName(teacher)">
+                  <img :src="teacher.photo ? BACKEND_URL + teacher.photo : 'https://picsum.photos/800/800?random=' + index" :alt="getName(teacher)">
                 </div>
                 <div class="teacher-details">
                   <div class="badge-row">
@@ -44,7 +44,7 @@
             <!-- Standard Card Style -->
             <template v-else>
               <div class="image-box">
-                <img :src="teacher.photo ? 'http://localhost:5010' + teacher.photo : 'https://picsum.photos/600/500?random=' + index" :alt="getName(teacher)">
+                <img :src="teacher.photo ? BACKEND_URL + teacher.photo : 'https://picsum.photos/600/500?random=' + index" :alt="getName(teacher)">
                 <span v-if="teacher.ieltsScore" class="ielts-badge">
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
                   IELTS {{ teacher.ieltsScore }}
@@ -69,6 +69,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
+import { BACKEND_URL } from '../services/api'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
@@ -76,8 +77,8 @@ const teachers = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/teachers')
-    teachers.value = res.data
+    const res = await axios.get(`${BACKEND_URL}/api/teachers`)
+    teachers.value = res.data.sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   } catch (error) {
     console.error('Failed to load teachers:', error)
   }

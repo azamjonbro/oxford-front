@@ -36,7 +36,7 @@
               class="course-card"
             >
               <div class="course-icon" v-if="course.image">
-                <img :src="'http://localhost:5010' + course.image" alt="course" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
+                <img :src="BACKEND_URL + course.image" alt="course" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
               </div>
               <div class="course-icon" v-else>
                 <component :is="IconMath" />
@@ -75,6 +75,7 @@
 import { ref, computed, onMounted, h } from 'vue'
 import { modalStore } from '../utils/modalStore'
 import axios from 'axios'
+import { BACKEND_URL } from '../services/api'
 import { useI18n } from 'vue-i18n'
 import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
 
@@ -84,7 +85,7 @@ const courses = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/courses')
+    const res = await axios.get(`${BACKEND_URL}/api/courses`)
     courses.value = res.data
   } catch (error) {
     console.error('Failed to load courses', error)

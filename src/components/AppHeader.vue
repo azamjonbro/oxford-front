@@ -12,6 +12,7 @@
         </router-link>
         <router-link to="/courses" class="nav-link">{{ $t('nav.courses') }}</router-link>
         <router-link to="/about" class="nav-link">{{ $t('nav.about') }}</router-link>
+        <router-link to="/results" class="nav-link">{{ $t('nav.results') }}</router-link>
         <router-link to="/contact" class="nav-link">{{ $t('nav.contact') }}</router-link>
       </nav>
 

@@ -1,13 +1,13 @@
 <template>
   <div class="home-page">
-    <HeroCarousel />
-    <AboutSection />
-    <BenefitsSection />
-    <TeachersSection />
-    <ResultsSection />
-    <FaqSection />
-    <EventsSection />
-    <ContactSection />
+    <section class="home-section"><HeroCarousel /></section>
+    <section class="home-section"><AboutSection /></section>
+    <section class="home-section"><BenefitsSection /></section>
+    <section class="home-section"><TeachersSection /></section>
+    <section class="home-section"><ResultsSection /></section>
+    <section class="home-section"><FaqSection /></section>
+    <section class="home-section"><EventsSection /></section>
+    <section class="home-section"><ContactSection /></section>
   </div>
 </template>
 
@@ -25,5 +25,9 @@ import ContactSection from '../components/ContactSection.vue'
 <style scoped>
 .home-page {
   width: 100%;
+}
+
+.home-section {
+  margin-bottom: 2rem;
 }
 </style>

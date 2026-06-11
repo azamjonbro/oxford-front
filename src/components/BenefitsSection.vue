@@ -12,12 +12,12 @@
           <div class="card-content">
             <span class="card-tag">{{ $t('benefits.app.tag') }}</span>
             <h3>{{ $t('benefits.app.title') }}</h3>
-            <p>{{ $t('benefits.app.desc') }}</p>
+            <!-- <p>{{ $t('benefits.app.desc') }}</p> -->
             <button class="btn-action" @click="modalStore.openModal($t('benefits.app.title'))">{{ $t('buttons.view_platform') }}</button>
           </div>
           <div class="app-visual">
             <div class="phone-frame">
-              <img src="https://picsum.photos/400/800?random=app_v4" alt="App">
+              <img  src="../assets/images/shop.png" alt="App" loading="lazy">
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
           </div>
           <p>{{ $t('benefits.prize.desc') }}</p>
           <div class="car-visual">
-            <img src="https://picsum.photos/500/300?random=car_v4" alt="BYD Car">
+            <img src="../assets/images/onix2.jpg" alt="BYD Car">
           </div>
         </div>
 
@@ -44,13 +44,13 @@
         </div>
 
         <!-- 4. Academic Support -->
-        <div class="benefit-card fac-card">
+        <!-- <div class="benefit-card fac-card">
           <div class="icon-box">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
           <h3>{{ $t('benefits.support.title') }}</h3>
           <p>{{ $t('benefits.support.desc') }}</p>
-        </div>
+        </div> -->
 
         <!-- 5. IELTS X (Brand Blue Card) -->
         <div class="benefit-card ieltsx-card brand-bg">
@@ -136,7 +136,7 @@ import { modalStore } from '../utils/modalStore'
 /* 1. App Card - PURE BRAND BLUE */
 .app-card.brand-bg, .app-card {
   grid-column: span 2;
-  grid-row: span 2;
+  grid-row: span 1  ;
   background: var(--color-primary);
   color: white;
   border: none;
@@ -175,13 +175,14 @@ import { modalStore } from '../utils/modalStore'
 
 .phone-frame {
   width: 220px;
+
   border-radius: 35px;
   padding: 8px;
   background: #0037a8;
   box-shadow: 0 30px 60px rgba(0,0,0,0.2);
 }
 
-.phone-frame img { width: 100%; border-radius: 30px; }
+.phone-frame img { width: 100%; border-radius: 30px; height: 100% !important; }
 
 /* 2. Prize Card */
 .prize-tag {
@@ -194,7 +195,7 @@ import { modalStore } from '../utils/modalStore'
 }
 
 .car-visual { margin-top: auto; }
-.car-visual img { width: 100%; }
+.car-visual img {  height: 300px; width: 100%; overflow: hidden; border-radius: 10px; }
 
 /* 3. Icon Cards */
 .icon-box {

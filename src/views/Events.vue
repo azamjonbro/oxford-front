@@ -28,7 +28,7 @@
               <span class="month">{{ formatDate(event.date, 'MMM') }}</span>
             </div>
             <div class="event-image">
-              <img :src="event.image ? 'http://localhost:5010' + event.image : 'https://picsum.photos/600/400?random=' + event._id" alt="Event">
+              <img :src="event.image ? BACKEND_URL + event.image : 'https://picsum.photos/600/400?random=' + event._id" alt="Event">
             </div>
             <div class="event-content">
               <div class="event-tags">
@@ -60,6 +60,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { modalStore } from '../utils/modalStore'
+import { BACKEND_URL } from '../services/api'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
 
@@ -69,7 +70,7 @@ const events = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/events')
+    const res = await axios.get(`${BACKEND_URL}/api/events`)
     events.value = res.data
   } catch (error) {
     console.error('Failed to load events', error)
@@ -245,6 +246,11 @@ const formatDate = (dateStr, format) => {
   color: var(--color-text-2);
   line-height: 1.5;
   margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .event-meta {

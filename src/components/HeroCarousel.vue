@@ -10,37 +10,44 @@
     </button>
 
     <div class="container">
-      <transition name="fade" mode="out-in">
-        <div class="hero-content" :key="currentIndex" v-if="currentBanner">
-          <!-- Text Side -->
-          <div class="hero-text">
-            <h1 class="title">
-              {{ getLocalized(currentBanner.title) }}
-            </h1>
-            <p class="subtitle">
-              {{ getLocalized(currentBanner.subtitle) }}
-            </p>
-            <div class="hero-actions">
-              <button class="btn-enroll" @click="modalStore.openModal(getLocalized(currentBanner.title))">
-                {{ t('buttons.enroll').toUpperCase() }}
-              </button>
-              <a v-if="currentBanner.link" :href="currentBanner.link" class="btn-link" target="_blank">
-                {{ t('buttons.more').toUpperCase() }}
-              </a>
-              <router-link to="/courses" class="btn-link" v-else>
-                {{ t('buttons.more').toUpperCase() }}
-              </router-link>
+      <div class="hero-slides-wrapper">
+        <transition-group name="hero-fade">
+          <div 
+            v-for="(banner, index) in displayBanners" 
+            :key="banner._id || index"
+            v-show="index === currentIndex"
+            class="hero-content"
+          >
+            <!-- Text Side -->
+            <div class="hero-text content-left">
+              <h1 class="title">
+                {{ getLocalized(banner.title) }}
+              </h1>
+              <p class="subtitle">
+                {{ getLocalized(banner.subtitle) }}
+              </p>
+              <div class="hero-actions">
+                <button class="btn-enroll" @click="modalStore.openModal(getLocalized(banner.title))">
+                  {{ t('buttons.enroll').toUpperCase() }}
+                </button>
+                <a v-if="banner.link" :href="banner.link" class="btn-link" target="_blank">
+                  {{ t('buttons.more').toUpperCase() }}
+                </a>
+                <router-link to="/courses" class="btn-link" v-else>
+                  {{ t('buttons.more').toUpperCase() }}
+                </router-link>
+              </div>
             </div>
-          </div>
 
-          <!-- Image Side -->
-          <div class="hero-image">
-            <div class="img-box">
-              <img :src="getImageUrl(currentBanner.image)" :alt="getLocalized(currentBanner.title)" />
+            <!-- Image Side -->
+            <div class="hero-image image-right">
+              <div class="img-box image-wrapper">
+                <img :src="getImageUrl(banner.image)" :alt="getLocalized(banner.title)" />
+              </div>
             </div>
           </div>
-        </div>
-      </transition>
+        </transition-group>
+      </div>
 
       <!-- Indicators -->
       <div class="indicators" v-if="displayBanners.length > 0">
@@ -62,13 +69,14 @@
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import axios from 'axios'
+import { BACKEND_URL } from '../services/api'
 import { modalStore } from '../utils/modalStore'
 
 const { t, locale } = useI18n()
 const banners = ref([])
 const currentIndex = ref(0)
 const autoPlayInterval = ref(null)
-const API_BASE = 'http://localhost:5010'
+const API_BASE = BACKEND_URL
 
 const defaultBanners = [
   {
@@ -141,7 +149,7 @@ const goToSlide = (index) => {
 const startAutoPlay = () => {
   stopAutoPlay()
   if (displayBanners.value.length > 1) {
-    autoPlayInterval.value = setInterval(nextSlide, 5000)
+    autoPlayInterval.value = setInterval(nextSlide, 4000)
   }
 }
 
@@ -209,14 +217,85 @@ onUnmounted(() => {
   box-shadow: 0 8px 20px rgba(0, 86, 255, 0.2);
 }
 
+.hero-slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.content-left {
+  animation: slideInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.image-right {
+  animation: slideInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.image-wrapper {
+  animation: floating 6s ease-in-out infinite;
+  animation-delay: 1.2s; /* Start floating after slide-in */
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: rgba(0, 86, 255, 0.08);
+  color: #0056ff;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 86, 255, 0.1);
+}
+
 .nav-btn.prev { left: 2rem; }
 .nav-btn.next { right: 2rem; }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
+}
+
+.hero-slides-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 80vh; /* Balandlikni aniq ko'rsatamiz */
+  display: flex;
+  align-items: center;
 }
 
 .hero-content {
@@ -224,24 +303,46 @@ onUnmounted(() => {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 5rem;
   align-items: center;
+  width: 100%;
+  transition: opacity 0.8s ease;
+}
+
+/* Transition Group Styles */
+.hero-fade-enter-active {
+  transition: opacity 0.8s ease;
+}
+
+.hero-fade-leave-active {
+  transition: opacity 0.8s ease;
+  position: absolute; /* Faqat chiqib ketayotgan element absolute bo'ladi */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.hero-fade-enter-from,
+.hero-fade-leave-to {
+  opacity: 0;
 }
 
 .title {
-  font-size: 5.5rem;
+  font-size: 5rem;
   font-weight: 900;
-  color: #000;
+  color: #0056ff;
   line-height: 1;
+  text-transform: uppercase;
   margin-bottom: 2.5rem;
   font-family: 'Inter', sans-serif;
   letter-spacing: -2px;
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   color: #475569;
   line-height: 1.6;
-  max-width: 520px;
   margin-bottom: 3.5rem;
+  max-width: 550px;
+  font-weight: 500;
 }
 
 .hero-actions {
@@ -287,7 +388,7 @@ onUnmounted(() => {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 40px;
-  overflow: hidden;
+  overflow:hidden;
   box-shadow: 0 30px 70px rgba(0,0,0,0.08);
 }
 

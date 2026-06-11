@@ -51,6 +51,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
+import { BACKEND_URL } from '../services/api'
 import axios from 'axios'
 
 const isPaused = ref(false)
@@ -58,7 +59,7 @@ const results = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/results')
+    const res = await axios.get(`${BACKEND_URL}/api/results`)
     results.value = res.data
   } catch (error) {
     console.error('Failed to load results', error)
@@ -68,7 +69,7 @@ onMounted(async () => {
 const getImageUrl = (img) => {
   if (!img) return 'https://picsum.photos/400/550?random=res'
   if (img.startsWith('http')) return img
-  return 'http://localhost:5010' + img
+  return BACKEND_URL + img
 }
 
 // Magnifier logic with dynamic keys for duplicated items

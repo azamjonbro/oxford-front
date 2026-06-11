@@ -19,7 +19,7 @@
               </div>
               <div>
                 <h4>{{ $t('contact.info.phone') }}</h4>
-                <p>+998 90 123 45 67</p>
+                <p>+998973701818</p>
               </div>
             </div>
 
@@ -29,7 +29,7 @@
               </div>
               <div>
                 <h4>{{ $t('contact.info.email') }}</h4>
-                <p>info@youroxford.uz</p>
+                <p>mail@newoxford.uz</p>
               </div>
             </div>
 
@@ -45,8 +45,8 @@
 
             <!-- Socials -->
             <div class="social-links">
-              <a href="https://t.me/oxfort_edu" class="social-btn">Telegram</a>
-              <a href="https://instagram.com/oxfort_edu" class="social-btn">Instagram</a>
+              <a href="https://t.me/oxford_school_uz" class="social-btn">Telegram</a>
+              <a href="https://www.instagram.com/oxfordschool.uz/" class="social-btn">Instagram</a>
             </div>
           </div>
 
@@ -81,7 +81,7 @@
         <div class="branches-grid">
           <div v-for="branch in branches" :key="branch._id" class="branch-card">
             <div class="branch-image">
-              <img :src="branch.images && branch.images.length ? 'http://localhost:5010' + branch.images[0] : 'https://picsum.photos/600/400?random=' + branch._id" alt="branch">
+              <img :src="branch.images && branch.images.length ? BACKEND_URL + branch.images[0] : 'https://picsum.photos/600/400?random=' + branch._id" alt="branch">
             </div>
             <div class="branch-info">
               <h3>{{ getLoc(branch.name) }}</h3>
@@ -115,6 +115,7 @@
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
 import axios from 'axios'
+import { BACKEND_URL } from '../services/api'
 import { useI18n } from 'vue-i18n'
 import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
 
@@ -129,7 +130,7 @@ const form = reactive({
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/branches')
+    const res = await axios.get(`${BACKEND_URL}/api/branches`)
     branches.value = res.data
   } catch (err) {
     console.error('Failed to load branches', err)

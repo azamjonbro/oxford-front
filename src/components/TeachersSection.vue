@@ -14,7 +14,7 @@
         <div v-if="teachers[0]" class="teacher-card head-card">
           <div class="card-inner">
             <div class="teacher-image">
-              <img :src="teachers[0].photo ? 'http://localhost:5010' + teachers[0].photo : 'https://picsum.photos/800/800?random=1'" :alt="getLoc(teachers[0].name)">
+              <img :src="teachers[0].photo ? BACKEND_URL + teachers[0].photo : 'https://picsum.photos/800/800?random=1'" :alt="getLoc(teachers[0].name)">
             </div>
             <div class="teacher-details">
               <div class="badge-row">
@@ -36,7 +36,7 @@
         <template v-for="(teacher, index) in teachers.slice(1, 4)" :key="teacher._id">
           <div class="teacher-card standard">
             <div class="image-box">
-              <img :src="teacher.photo ? 'http://localhost:5010' + teacher.photo : 'https://picsum.photos/600/500?random=' + index" :alt="getLoc(teacher.name)">
+              <img :src="teacher.photo ? BACKEND_URL + teacher.photo : 'https://picsum.photos/600/500?random=' + index" :alt="getLoc(teacher.name)">
               <span v-if="teacher.ieltsScore" class="ielts-badge">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
                 IELTS {{ teacher.ieltsScore }}
@@ -71,6 +71,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { BACKEND_URL } from '../services/api'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
 import { currentLocale, getLoc as getLocHelper } from '../utils/localeStore'
@@ -80,8 +81,8 @@ const teachers = ref([])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:5010/api/teachers')
-    teachers.value = res.data
+    const res = await axios.get(`${BACKEND_URL}/api/teachers`)
+    teachers.value = res.data.sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
     
     // SEO: Update Meta Keywords
     const allTags = teachers.value.flatMap(t => t.hashtags || [])

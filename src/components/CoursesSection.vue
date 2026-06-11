@@ -15,19 +15,19 @@
       <div class="courses-grid">
         <div v-for="course in courses.slice(0,3)" :key="course._id" class="course-card-modern">
           <div class="course-image">
-            <img :src="course.image || 'https://images.unsplash.com/photo-1546410531-bb4caa1b424d?q=80&w=2071&auto=format&fit=crop'" :alt="course.name?.[locale]" />
-            <div class="course-tag">{{ course.duration }}</div>
+            <img :src="course.image ? BACKEND_URL + course.image : 'https://images.unsplash.com/photo-1546410531-bb4caa1b424d?q=80&w=2071&auto=format&fit=crop'" :alt="course.title?.[locale]" />
+            <div class="course-tag">{{ course.duration?.[locale] || course.duration?.uz || course.duration }}</div>
           </div>
           <div class="course-info">
             <div class="course-category">INGLIZ TILI</div>
-            <h3>{{ course.name?.[locale] || course.name?.uz }}</h3>
+            <h3>{{ course.title?.[locale] || course.title?.uz }}</h3>
             <p>{{ course.description?.[locale] || course.description?.uz }}</p>
             <div class="course-hashtags">
               <span v-for="tag in course.hashtags" :key="tag" class="hashtag">#{{ tag }}</span>
             </div>
             <div class="course-footer">
               <span class="price-tag">{{ course.price }}</span>
-              <button class="btn-enroll">{{ t('courses.enroll') }}</button>
+              <button class="btn-enroll" @click="modalStore.openModal(course.title?.[locale] || course.title?.uz)">{{ t('courses.enroll') }}</button>
             </div>
           </div>
         </div>
@@ -37,16 +37,21 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { modalStore } from '../utils/modalStore'
+import { BACKEND_URL } from '../services/api'
+import axios from 'axios'
 
 const { t, locale } = useI18n()
-const store = useStore()
-const courses = computed(() => store.state.courses || [])
-onMounted(() => {
-  store.dispatch('fetch', 'courses').then(() => {
-    // SEO: Update Meta Keywords
+const courses = ref([])
+
+onMounted(async () => {
+  try {
+    const res = await axios.get(`${BACKEND_URL}/api/courses`)
+    courses.value = res.data
+    
+    // SEO: Update Meta Keywords dynamically based on course hashtags
     const allTags = courses.value.flatMap(c => c.hashtags || [])
     if (allTags.length) {
       let meta = document.querySelector('meta[name="keywords"]')
@@ -55,12 +60,13 @@ onMounted(() => {
         meta.name = "keywords"
         document.head.appendChild(meta)
       }
-      // Combine with existing keywords if any
       const existing = meta.content ? meta.content.split(', ') : []
       const uniqueTags = [...new Set([...existing, ...allTags])]
       meta.content = uniqueTags.join(', ')
     }
-  })
+  } catch (error) {
+    console.error('Failed to load courses', error)
+  }
 })
 </script>
 
