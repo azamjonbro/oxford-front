@@ -71,6 +71,7 @@ import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import { BACKEND_URL } from '../services/api'
 import { modalStore } from '../utils/modalStore'
+import { loadingStore } from '../utils/loadingStore'
 
 const { t, locale } = useI18n()
 const banners = ref([])
@@ -118,7 +119,17 @@ const getImageUrl = (path) => {
   return `${API_BASE}${path}`
 }
 
+const preloadImage = (url) => {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.src = url
+    img.onload = () => resolve()
+    img.onerror = () => resolve() // Resolve anyway so we don't block
+  })
+}
+
 const fetchBanners = async () => {
+  loadingStore.startLoading()
   try {
     const response = await axios.get(`${API_BASE}/api/banners`)
     if (Array.isArray(response.data) && response.data.length > 0) {
@@ -126,6 +137,14 @@ const fetchBanners = async () => {
     }
   } catch (err) {
     console.error('Error fetching banners:', err)
+  } finally {
+    // Preload the first banner image for immediate display
+    const firstBanner = displayBanners.value[0]
+    if (firstBanner) {
+      const imgUrl = getImageUrl(firstBanner.image)
+      await preloadImage(imgUrl)
+    }
+    loadingStore.stopLoading()
   }
 }
 

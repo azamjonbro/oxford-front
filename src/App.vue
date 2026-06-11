@@ -1,5 +1,6 @@
 <template>
   <div class="app-container" :key="currentLocale">
+    <PageLoader />
     <MainHeader />
     <router-view />
     <MainFooter />
@@ -18,11 +19,24 @@
 import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
 import RegistrationModal from './components/RegistrationModal.vue'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import PageLoader from './components/PageLoader.vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { currentLocale } from './utils/localeStore.js'
+import { loadingStore } from './utils/loadingStore.js'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+
+// If the user navigates directly to a page other than Home, stop loading automatically
+watch(
+  () => route.path,
+  (newPath) => {
+    if (newPath !== '/') {
+      loadingStore.stopLoading()
+    }
+  },
+  { immediate: true }
+)
 
 // Test sahifalarida cursor shadow ko'rinmaydi
 const isTestRoute = computed(() =>
