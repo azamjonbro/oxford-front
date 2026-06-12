@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container" :key="currentLocale">
+  <div class="app-container" :class="{ 'no-padding': isTestRoute }" :key="currentLocale">
     <PageLoader />
-    <MainHeader />
+    <MainHeader v-if="!isTestRoute" />
     <router-view />
-    <MainFooter />
+    <MainFooter v-if="!isTestRoute" />
     <RegistrationModal />
 
     <!-- Cursor circle — test sahifalarida yashiriladi -->
@@ -81,6 +81,9 @@ onUnmounted(() => {
 <style>
 .app-container {
   padding-top: 90px;
+}
+.app-container.no-padding {
+  padding-top: 0 !important;
 }
 
 /* ===== CURSOR ===== */

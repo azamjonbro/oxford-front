@@ -1,5 +1,37 @@
 <template>
   <div class="test-exam-container" v-if="sessionLoaded">
+    <!-- Fullscreen Gate Overlay -->
+    <div class="fullscreen-gate-overlay" v-if="!isFullscreenActive">
+      <div class="gate-card">
+        <div class="gate-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            <path d="M10 21v-6a2 2 0 0 0-2-2H2"/>
+            <path d="M14 3v6a2 2 0 0 0 2 2h6"/>
+          </svg>
+        </div>
+        <h3>To'liq ekran rejimi talab qilinadi</h3>
+        <p>Testni boshlash yoki davom ettirish uchun brauzeringizni to'liq ekran rejimiga o'tkazishingiz kerak. Bu test jarayonining shaffofligini ta'minlash uchun zarur.</p>
+        <button @click="enterFullscreen" class="btn-enter-fullscreen">To'liq ekranga o'tish</button>
+      </div>
+    </div>
+
+    <!-- Focus Gate Overlay -->
+    <div class="focus-gate-overlay" v-if="isFullscreenActive && !isWindowFocused">
+      <div class="focus-card">
+        <div class="focus-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3>Oyna fokusi yo'qotildi</h3>
+        <p>Test vaqtida boshqa dasturlarga yoki oynalarga o'tish taqiqlanadi! Davom etish uchun ushbu oynaga bosing.</p>
+        <button @click="refocusWindow" class="btn-refocus">Ekranga qaytish</button>
+      </div>
+    </div>
+
     <!-- Top Progress & Status Bar -->
     <header class="exam-header">
       <div class="header-inner container">
@@ -469,6 +501,8 @@ const remainingSeconds = ref(3600); // Default 60 minutes in seconds
 const timerInterval = ref(null);
 const submitting = ref(false);
 const showQuitModal = ref(false);
+const isFullscreenActive = ref(false);
+const isWindowFocused = ref(true);
 
 // Audio elements replay trackers
 const audioPlayCount = ref(0);
@@ -570,13 +604,40 @@ onMounted(async () => {
   // Start timer ticking
   startTimer();
 
-  // Anti-cheat event listeners
+  // Fullscreen checking
+  checkFullscreen();
+  document.addEventListener("fullscreenchange", checkFullscreen);
+  document.addEventListener("webkitfullscreenchange", checkFullscreen);
+  document.addEventListener("mozfullscreenchange", checkFullscreen);
+  document.addEventListener("MSFullscreenChange", checkFullscreen);
+
+  // Window focus/blur tracking
+  window.addEventListener("blur", handleWindowBlur);
+  window.addEventListener("focus", handleWindowFocus);
+
+  // Anti-cheat event listeners (no copy/paste/right-click)
+  document.addEventListener("contextmenu", preventCheat);
+  document.addEventListener("copy", preventCheat);
+  document.addEventListener("cut", preventCheat);
+  document.addEventListener("paste", preventCheat);
   document.addEventListener("visibilitychange", handleVisibilityChange);
   window.addEventListener("beforeunload", preventRefresh);
 });
 
 onUnmounted(() => {
   clearInterval(timerInterval.value);
+  document.removeEventListener("fullscreenchange", checkFullscreen);
+  document.removeEventListener("webkitfullscreenchange", checkFullscreen);
+  document.removeEventListener("mozfullscreenchange", checkFullscreen);
+  document.removeEventListener("MSFullscreenChange", checkFullscreen);
+
+  window.removeEventListener("blur", handleWindowBlur);
+  window.removeEventListener("focus", handleWindowFocus);
+
+  document.removeEventListener("contextmenu", preventCheat);
+  document.removeEventListener("copy", preventCheat);
+  document.removeEventListener("cut", preventCheat);
+  document.removeEventListener("paste", preventCheat);
   document.removeEventListener("visibilitychange", handleVisibilityChange);
   window.removeEventListener("beforeunload", preventRefresh);
 });
@@ -808,6 +869,45 @@ const formatTime = (secs) => {
   return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
 };
 
+// Fullscreen Control Handlers
+const checkFullscreen = () => {
+  isFullscreenActive.value = !!(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
+  );
+};
+
+const enterFullscreen = () => {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen().catch((err) => console.log("Fullscreen request failed:", err));
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+};
+
+// Window Focus Control Handlers
+const handleWindowBlur = () => {
+  isWindowFocused.value = false;
+};
+
+const handleWindowFocus = () => {
+  isWindowFocused.value = true;
+};
+
+const refocusWindow = () => {
+  window.focus();
+  isWindowFocused.value = true;
+};
+
+const preventCheat = (e) => {
+  e.preventDefault();
+};
+
 // Anti-Cheat Handlers
 const handleVisibilityChange = async () => {
   if (document.hidden) {
@@ -865,6 +965,19 @@ const submitExam = async (isAuto = false) => {
     // Remove local storage
     localStorage.removeItem("placement_session");
 
+    // Exit fullscreen programmatically when test is submitted
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          await document.webkitExitFullscreen();
+        }
+      }
+    } catch (fsErr) {
+      console.log("Exit fullscreen failed:", fsErr);
+    }
+
     // Redirect to results passing score, level, and feedback
     localStorage.setItem("placement_result_cache", JSON.stringify(res.data));
     router.push("/test/result");
@@ -877,11 +990,149 @@ const submitExam = async (isAuto = false) => {
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
+
+.fullscreen-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-card {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: scaleUp 0.3s ease;
+  box-sizing: border-box;
+}
+
+.focus-icon {
+  color: #ef4444;
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.focus-card p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.btn-refocus {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-refocus:hover {
+  background: #dc2626;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.gate-card {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: scaleUp 0.3s ease;
+  box-sizing: border-box;
+}
+
+.gate-icon {
+  color: #6366f1;
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gate-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.gate-card p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.btn-enter-fullscreen {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-enter-fullscreen:hover {
+  background: #4f46e5;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 .test-exam-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding-top: 85px; /* Offset fixed header */
+  overflow: hidden;
+  padding-top: 0;
   background: #f8fafc;
 }
 
@@ -891,7 +1142,7 @@ const submitExam = async (isAuto = false) => {
   padding: 1rem 0;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
   position: sticky;
-  top: 90px;
+  top: 0;
   z-index: 10;
 }
 
@@ -983,13 +1234,14 @@ const submitExam = async (isAuto = false) => {
 /* Workspace Layout */
 .exam-workspace {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 3fr 9fr;
   gap: 2rem;
   flex: 1;
   padding-top: 2rem;
   padding-bottom: 3rem;
-  height: calc(100vh - 165px);
+  height: calc(100vh - 80px);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .exam-sidebar {
@@ -1002,6 +1254,7 @@ const submitExam = async (isAuto = false) => {
   gap: 1.5rem;
   height: 100%;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .sections-nav {
@@ -1097,12 +1350,15 @@ const submitExam = async (isAuto = false) => {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .question-box {
   padding: 2.5rem;
   flex: 1;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .question-header {
@@ -1136,14 +1392,19 @@ const submitExam = async (isAuto = false) => {
   color: #0f172a;
   line-height: 1.4;
   margin-bottom: 2rem;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 /* Reading Split passsge styles */
 .reading-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 2rem;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .passage-panel {
@@ -1153,6 +1414,7 @@ const submitExam = async (isAuto = false) => {
   border: 1px solid #e2e8f0;
   overflow-y: auto;
   max-height: 350px;
+  box-sizing: border-box;
 }
 
 .passage-panel h5 {
@@ -1166,7 +1428,10 @@ const submitExam = async (isAuto = false) => {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #334155;
-  white-space: pre-line;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Audio Player */
@@ -1209,11 +1474,26 @@ const submitExam = async (isAuto = false) => {
   color: #334155;
   cursor: pointer;
   transition: all 0.2s;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .option-item input {
   accent-color: #6366f1;
   scale: 1.2;
+  flex-shrink: 0;
+}
+
+.option-item span {
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .selected-opt {
@@ -1230,6 +1510,7 @@ const submitExam = async (isAuto = false) => {
   font-size: 1.1rem;
   font-family: inherit;
   outline: none;
+  box-sizing: border-box;
 }
 
 .text-input-field:focus {

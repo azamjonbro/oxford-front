@@ -9,7 +9,7 @@
       <div class="about-grid">
         <!-- Video/Image Left -->
         <div class="about-video-box">
-          <img src="https://picsum.photos/1000/700?random=about_v3" alt="About Oxford" class="main-img">
+          <img src="../assets/images/about.jpg" alt="About Oxford" class="main-img">
           <div class="play-button">
             <svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M8 5v14l11-7z"/></svg>
           </div>

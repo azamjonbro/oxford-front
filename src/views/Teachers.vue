@@ -189,7 +189,7 @@ const groupedTeachers = computed(() => {
 
 .head-card .card-inner { display: flex; height: 100%; }
 .head-card .teacher-image { width: 45%; }
-.head-card .teacher-image img { width: 100%; height: 100%; object-fit: cover; }
+.head-card .teacher-image img { width: 100%; height: 100%; object-fit: contain; }
 .head-card .teacher-details { padding: 40px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
 
 .badge-row { display: flex; gap: 12px; margin-bottom: 20px; }
@@ -204,7 +204,7 @@ const groupedTeachers = computed(() => {
 .teacher-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
 
 .image-box { position: relative; height: 320px; }
-.image-box img { width: 100%; height: 100%; object-fit: cover; }
+.image-box img { width: 100%; height: 100%; object-fit: contain; }
 
 .ielts-badge {
   position: absolute; top: 20px; right: 20px; background: white; padding: 6px 12px; border-radius: 6px;

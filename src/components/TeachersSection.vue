@@ -165,7 +165,7 @@ const getLoc = (obj) => getLocHelper(obj, currentLocale)
 .head-card .teacher-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .head-card .teacher-details {
@@ -235,7 +235,7 @@ const getLoc = (obj) => getLocHelper(obj, currentLocale)
 .image-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .ielts-badge {
